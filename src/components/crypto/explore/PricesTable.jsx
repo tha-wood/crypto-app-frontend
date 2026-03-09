@@ -1,104 +1,4 @@
-import btc from "../../assets/icons/btc.png";
-import eth from "../../assets/icons/eth.png";
-import tether from "../../assets/icons/tether.png";
-import bnb from "../../assets/icons/bnb.png";
-import xrp from "../../assets/icons/xrp.png";
-import usdc from "../../assets/icons/usdc.png";
-import solana from "../../assets/icons/btc.png";
-import tron from "../../assets/icons/jupiter.png";
-
-const rows = [
-  {
-    icon: btc,
-    name: "Bitcoin",
-    symbol: "BTC",
-    price: "GHS 740,190.48",
-    change: "↗ 2.44%",
-    changeColor: "text-green-600",
-    mktCap: "GHS 14.8T",
-    volume: "GHS 544.0B",
-    chart: "orange",
-  },
-  {
-    icon: eth,
-    name: "Ethereum",
-    symbol: "ETH",
-    price: "GHS 21,778.35",
-    change: "↗ 4.30%",
-    changeColor: "text-green-600",
-    mktCap: "GHS 2.6T",
-    volume: "GHS 258.4B",
-    chart: "blue",
-  },
-  {
-    icon: tether,
-    name: "Tether",
-    symbol: "USDT",
-    price: "GHS 10.79",
-    change: "↗ 0.01%",
-    changeColor: "text-green-600",
-    mktCap: "GHS 2.0T",
-    volume: "GHS 991.8B",
-    chart: "green",
-  },
-  {
-    icon: bnb,
-    name: "BNB",
-    symbol: "BNB",
-    price: "GHS 6,873.11",
-    change: "↗ 3.77%",
-    changeColor: "text-green-600",
-    mktCap: "GHS 936.0B",
-    volume: "GHS 17.5B",
-    chart: "yellow",
-  },
-  {
-    icon: xrp,
-    name: "XRP",
-    symbol: "XRP",
-    price: "GHS 14.74",
-    change: "↗ 1.43%",
-    changeColor: "text-green-600",
-    mktCap: "GHS 897.5B",
-    volume: "GHS 26.3B",
-    chart: "black",
-  },
-  {
-    icon: usdc,
-    name: "USDC",
-    symbol: "USDC • Earns 3.35% APY",
-    price: "GHS 10.78",
-    change: "0.00%",
-    changeColor: "text-black",
-    mktCap: "GHS 838.6B",
-    volume: "GHS 138.4B",
-    chart: "blue",
-  },
-  {
-    icon: solana,
-    name: "Solana",
-    symbol: "SOL",
-    price: "GHS 921.97",
-    change: "↗ 4.74%",
-    changeColor: "text-green-600",
-    mktCap: "GHS 521.7B",
-    volume: "GHS 43.1B",
-    chart: "purple",
-  },
-  {
-    icon: tron,
-    name: "TRON",
-    symbol: "TRX",
-    price: "GHS 3.09",
-    change: "↘ 1.10%",
-    changeColor: "text-red-500",
-    mktCap: "GHS 292.7B",
-    volume: "GHS 6.4B",
-    chart: "red",
-  },
-];
-
-const filters = ["All assets", "1D", "GHS", "10 rows"];
+import { priceFilters, priceRows } from "../../../data/exploreData";
 
 function chartColorClass(color) {
   if (color === "orange") return "text-orange-500";
@@ -135,7 +35,7 @@ export default function PricesTable() {
           </button>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            {filters.map((item) => (
+            {priceFilters.map((item) => (
               <button
                 key={item}
                 className="rounded-full bg-[#e9edf2] px-5 py-3 text-[16px] font-medium text-black"
@@ -161,7 +61,7 @@ export default function PricesTable() {
               </thead>
 
               <tbody>
-                {rows.map((row) => (
+                {priceRows.map((row) => (
                   <tr key={row.name}>
                     <td className="text-gray-400">☆</td>
 

@@ -1,30 +1,4 @@
-import FeaturedImage from "../../assets/images/featured-article.png"
-const popularItems = [
-  {
-    label: "BEGINNER'S GUIDE",
-    title: "What is cryptocurrency?",
-  },
-  {
-    label: "GETTING STARTED",
-    title: "How to earn crypto rewards",
-  },
-  {
-    label: "GETTING STARTED",
-    title: "How to add crypto to your Coinbase Wallet",
-  },
-  {
-    label: "YOUR CRYPTO",
-    title: "Tax forms, explained: A guide to U.S. tax forms and crypto reports",
-  },
-  {
-    label: "GETTING STARTED",
-    title: "Beginner’s guide to dapps",
-  },
-  {
-    label: "MARKET UPDATE",
-    title: "Everything you need to know about the first-ever U.S. Bitcoin ETF",
-  },
-];
+import { featuredContent, popularItems } from "../../../data/learnData";
 
 export default function FeaturedSection() {
   return (
@@ -35,23 +9,22 @@ export default function FeaturedSection() {
 
           <div className="mt-8 overflow-hidden rounded-none bg-[#c8d3d3]">
             <img
-              src={FeaturedImage}
+              src={featuredContent.image}
               alt="Featured article"
               className="w-full object-cover"
             />
           </div>
 
           <p className="mt-5 text-[14px] font-semibold tracking-wide text-gray-500 uppercase">
-            Video tutorial
+            {featuredContent.label}
           </p>
 
           <h3 className="mt-3 text-[32px] font-semibold leading-[1.1] tracking-[-0.02em] text-black">
-            When is the best time to invest in crypto?
+            {featuredContent.title}
           </h3>
 
           <p className="mt-4 max-w-[900px] text-[18px] leading-8 text-black">
-            When prices are fluctuating, how do you know when to buy? Learn
-            more about using dollar-cost averaging to weather price volatility.
+            {featuredContent.description}
           </p>
         </div>
 

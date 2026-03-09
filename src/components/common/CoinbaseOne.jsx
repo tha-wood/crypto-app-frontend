@@ -1,6 +1,6 @@
-import coinbaseOneImg from "../assets/images/coinbase-one.png";
-import coinbaseTwoImg from "../assets/images/coinbase-two.png";
-import coinbaseLogo from "../assets/images/logo.png"
+import coinbaseOneImg from "../../assets/images/coinbase-one.png";
+import coinbaseTwoImg from "../../assets/images/coinbase-two.png";
+import coinbaseLogo from "../../assets/images/logo.png"
 
 
 export default function CoinbaseOne() {

@@ -1,20 +1,4 @@
-const tags = [
-  "Bitcoin",
-  "Blockchain",
-  "Cardano",
-  "Crypto wallet",
-  "DeFi",
-  "Ethereum",
-  "Fork",
-  "Inflation",
-  "Market cap",
-  "NFT",
-  "Private key",
-  "Protocol",
-  "Smart contract",
-  "Token",
-  "Volatility memecoin",
-];
+import { tagCloud } from "../../../data/learnData";
 
 export default function TagCloudSection() {
   return (
@@ -25,7 +9,7 @@ export default function TagCloudSection() {
         </h2>
 
         <div className="mx-auto mt-14 flex max-w-[1160px] flex-wrap justify-center gap-4">
-          {tags.map((tag) => (
+          {tagCloud.map((tag) => (
             <button
               key={tag}
               className="rounded-md bg-white px-7 py-4 text-[18px] font-semibold text-black shadow-sm"

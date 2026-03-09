@@ -1,38 +1,4 @@
-import Graph1 from "../../assets/images/graph-1.png";
-import Graph2 from "../../assets/images/graph-2.png";
-import Graph3 from "../../assets/images/graph-3.png";
-import Graph4 from "../../assets/images/graph-4.png";
-
-const stats = [
-  {
-    title: "Total market cap",
-    value: "GHS 24.57T",
-    change: "↗ 2.21%",
-    changeColor: "text-green-600",
-    chart: Graph1,
-  },
-  {
-    title: "Trade volume",
-    value: "GHS 2.15T",
-    change: "↗ 67.01%",
-    changeColor: "text-green-600",
-    chart: Graph2,
-  },
-  {
-    title: "Buy-sell ratio",
-    value: "GHS 0.77",
-    change: "↗ 0.24%",
-    changeColor: "text-green-600",
-    chart: Graph3,
-  },
-  {
-    title: "BTC dominance",
-    value: "60.21%",
-    change: "↗ 0.29%",
-    changeColor: "text-green-600",
-    chart: Graph4,
-  },
-];
+import { marketStats } from "../../../data/exploreData";
 
 export default function MarketStatsMain() {
   return (
@@ -63,7 +29,7 @@ export default function MarketStatsMain() {
 
         <div className="mt-8 overflow-x-auto hide-scrollbar">
           <div className="flex w-max gap-4 pb-2">
-            {stats.map((item) => (
+            {marketStats.map((item) => (
               <div
                 key={item.title}
                 className="w-[340px] shrink-0 rounded-[24px] bg-gray-100 p-5"

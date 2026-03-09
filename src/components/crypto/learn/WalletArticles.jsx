@@ -1,38 +1,4 @@
-import DifferenceWallet from "../../assets/images/difference-wallet.png";
-import SetupWallet from "../../assets/images/wallet.png";
-import AddWallet from "../../assets/images/add-wallet.png";
-import SendWallet from "../../assets/images/send-wallet.png";
-
-const demoCards = [
-  {
-    image: DifferenceWallet,
-    label: "",
-    title: "What’s the difference between Coinbase and Coinbase Wallet?",
-    description:
-      "And how can a wallet help me access NFTs or DeFi? Your self-custody wallet questions, answered",
-  },
-  {
-    image: SetupWallet,
-    label: "VIDEO TUTORIAL",
-    title: "How to set up a crypto wallet",
-    description:
-      "Learn how to setup and get started with a crypto wallet.",
-  },
-  {
-    image: AddWallet,
-    label: "GETTING STARTED",
-    title: "How to add crypto to your Coinbase Wallet",
-    description:
-      "A quick guide on how to add crypto to your Coinbase self-custody wallet.",
-  },
-  {
-    image: SendWallet,
-    label: "",
-    title: "How to send or receive crypto using Coinbase Wallet",
-    description:
-      "Coinbase Wallet helps you unlock one of the most significant features of crypto: the ability to send or receive peer-to-peer transfers without any financial intermediaries.",
-  },
-];
+import { walletArticleCards } from "../../../data/learnData";
 
 export default function WalletArticles({ title, subtitle, buttonText }) {
   return (
@@ -49,7 +15,7 @@ export default function WalletArticles({ title, subtitle, buttonText }) {
         </div>
 
         <div className="mt-16 grid gap-12 md:grid-cols-2">
-          {demoCards.map((card, index) => (
+          {walletArticleCards.map((card, index) => (
             <article key={`${card.title}-${index}`}>
               <div className="overflow-hidden bg-[#c8d3d3]">
                 <img

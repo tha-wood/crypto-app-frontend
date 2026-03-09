@@ -1,14 +1,14 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import LearnHero from "../components/learn/LearnHero";
-import FeaturedSection from "../components/learn/FeaturedSection";
-import CategoryStrip from "../components/learn/CategoryStrip";
-import TopicSection from "../components/learn/TopicSection";
-import TagCloudSection from "../components/learn/TagCloudSection";
-import Tips from "../components/learn/Tips";
-import WalletArticles from "../components/learn/WalletArticles";
-import Futures from "../components/learn/Futures";
-import AdvancedTrading from "../components/learn/AdvancedTrading";
+import LearnHero from "../components/crypto/learn/LearnHero";
+import FeaturedSection from "../components/crypto/learn/FeaturedSection";
+import CategoryStrip from "../components/crypto/learn/CategoryStrip";
+import TopicSection from "../components/crypto/learn/TopicSection";
+import TagCloudSection from "../components/crypto/learn/TagCloudSection";
+import Tips from "../components/crypto/learn/Tips";
+import WalletArticles from "../components/crypto/learn/WalletArticles";
+import Futures from "../components/crypto/learn/Futures";
+import AdvancedTrading from "../components/crypto/learn/AdvancedTrading";
 
 
 export default function LearnPage() {

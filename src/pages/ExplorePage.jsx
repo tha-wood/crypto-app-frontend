@@ -1,9 +1,9 @@
 import Header from "../components/layout/Header";
-import ExploreMainHero from "../components/explore/ExploreHero";
-import ExploreSidebar from "../components/explore/ExploreSidebar";
-import MarketStatsMain from "../components/explore/MarketStats";
-import PricesTable from "../components/explore/PricesTable";
-import ExploreCta from "../components/explore/ExploreCta";
+import ExploreMainHero from "../components/crypto/explore/ExploreHero";
+import ExploreSidebar from "../components/crypto/explore/ExploreSidebar";
+import MarketStatsMain from "../components/crypto/explore/MarketStats";
+import PricesTable from "../components/crypto/explore/PricesTable";
+import ExploreCta from "../components/crypto/explore/ExploreCta";
 import Footer from "../components/layout/Footer";
 
 export default function ExplorePage() {

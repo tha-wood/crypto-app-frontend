@@ -1,11 +1,11 @@
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import Explore from "../components/Explore";
-import Hero from "../components/Hero";
-import AdvancedTrader from "../components/AdvancedTrader";
-import CoinbaseOne from "../components/CoinbaseOne";
-import LearnBasics from "../components/LearnBasics";
-import TakeControl from "../components/TakeControl"
+import Explore from "../components/crypto/Explore";
+import Hero from "../components/common/Hero";
+import AdvancedTrader from "../components/common/AdvancedTrader";
+import CoinbaseOne from "../components/common/CoinbaseOne";
+import LearnBasics from "../components/common/LearnBasics";
+import TakeControl from "../components/common/TakeControl";
 
 export default function Home() {
   return (

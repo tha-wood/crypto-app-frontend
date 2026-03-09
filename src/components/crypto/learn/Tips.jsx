@@ -1,32 +1,8 @@
-import TechnicalAnalysis from "../../assets/images/technical-analysis.png";
-import FuturesMarketData from "../../assets/images/futures-market-data.png";
-import TradingCharts from "../../assets/images/trading-charts.png";
-import OrderBook from "../../assets/images/order-book.png";
+import { tipsCards } from "../../../data/learnData";
 
-const demoCards = [
-  {
-    image: TechnicalAnalysis,
-    label: "KEY TERM",
-    title: "What is technical analysis?",
-  },
-  {
-    image: FuturesMarketData,
-    label: "ADVANCED GUIDE",
-    title: "How can I use crypto futures market data for spot trading?",
-  },
-  {
-    image: TradingCharts,
-    label: "ADVANCED GUIDE",
-    title: "How to read advanced trading charts",
-  },
-  {
-    image: OrderBook,
-    label: "KEY TERM",
-    title: "What is an order book?",
-  },
-];
 
-export default function AdvancedTrading({ title, subtitle, buttonText }) {
+
+export default function Tips({ title, subtitle, buttonText }) {
   return (
     <section className="border-b border-gray-200 px-4 py-20 md:px-8 lg:px-10">
       <div className="mx-auto max-w-[1240px]">
@@ -41,7 +17,7 @@ export default function AdvancedTrading({ title, subtitle, buttonText }) {
         </div>
 
         <div className="mt-16 grid gap-12 md:grid-cols-2">
-          {demoCards.map((card, index) => (
+          {tipsCards.map((card, index) => (
             <article key={`${card.title}-${index}`}>
               <div className="overflow-hidden bg-[#c8d3d3]">
                 <img

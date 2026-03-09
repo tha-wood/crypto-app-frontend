@@ -1,38 +1,5 @@
-import hypeIcon from "../../assets/icons/hyperliquid.png";
-import jupiterIcon from "../../assets/icons/jupiter.png";
-import faiIcon from "../../assets/icons/freysa.png";
-import flowIcon from "../../assets/icons/flow.png";
-import StarImage from "../../assets/images/star.svg"
-
-const movers = [
-  {
-    icon: flowIcon,
-    name: "FLOW",
-    change: "↗ 17.28%",
-    price: "GHS 0.52",
-  },
-  {
-    icon: faiIcon,
-    name: "FAI",
-    change: "↗ 19.66%",
-    price: "GHS 0.0878",
-  },
-];
-
-const newOnCoinbase = [
-  {
-    icon: hypeIcon,
-    symbol: "HYPE",
-    name: "Hyperliquid",
-    subtitle: "Added Feb 5",
-  },
-  {
-    icon: jupiterIcon,
-    symbol: "JUPITER",
-    name: "Jupiter",
-    subtitle: "Added Dec 9",
-  },
-];
+import StarImage from "../../../assets/images/star.svg";
+import { newOnCoinbase, topMovers } from "../../../data/exploreData";
 
 export default function ExploreSidebar() {
   return (
@@ -77,7 +44,7 @@ export default function ExploreSidebar() {
           <p className="mt-3 text-[16px] text-gray-500">24hr change</p>
 
           <div className="mt-6 grid grid-cols-2 gap-4">
-            {movers.map((item) => (
+            {topMovers.map((item) => (
               <div
                 key={item.name}
                 className="rounded-[28px] bg-[#e9edf2] p-5"

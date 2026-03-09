@@ -1,14 +1,4 @@
-import CryptoImage from "../../assets/images/crypto-basics.png";
-import TipsImage from "../../assets/images/tips.png";
-import AdvancedImage from "../../assets/images/advanced-trading-image.png";
-import FuturesImage from "../../assets/images/futures.png";
-
-const categories = [
-  { title: "Crypto basics", icon:CryptoImage},
-  { title: "Tips and tutorials", icon: TipsImage },
-  { title: "Advanced trading", icon: AdvancedImage },
-  { title: "Futures", icon: FuturesImage },
-];
+import { categories } from "../../../data/learnData";
 
 export default function CategoryStrip() {
   return (

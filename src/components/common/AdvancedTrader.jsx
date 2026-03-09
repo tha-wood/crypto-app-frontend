@@ -1,4 +1,4 @@
-import advancedTraderImg from "../assets/images/advanced-trader.png";
+import advancedTraderImg from "../../assets/images/advanced-trader.png";
 
 export default function AdvancedTrader() {
   return (

@@ -1,48 +1,4 @@
-import CryptoBasics from "../../assets/images/invest-card.png"
-import AltCoin from "../../assets/images/Alt-Coin.png"
-import Eth from "../../assets/images/ethereum.png"
-import Defi from "../../assets/images/defi.png"
-import StableCoin from "../../assets/images/stablecoin.png"
-import Glossary from "../../assets/images/glossary.png"
-const demoCards = [
-  {
-    image: CryptoBasics,
-    label: "BEGINNER'S GUIDE",
-    title: "What is Bitcoin?",
-    description:
-      "Bitcoin is the world's first widely adopted cryptocurrency — it allows for secure and seamless peer-to-peer transactions on the internet.",
-  },
-  {
-    image: AltCoin,
-    label: "BEGINNER'S GUIDE",
-    title: "Guide to DeFi tokens and altcoins",
-    description:
-      "From Aave to Zcash, decide what to trade with our beginner's guide",
-  }
-];
-
-const demoCards2 = [
-  {
-    image: Eth,
-    label: "BEGINNER'S GUIDE",
-    title: "What is Ethereum?",
-  },
-  {
-    image: Defi,
-    label: "KEY TERM",
-    title: "What is DeFi",
-  },
-  {
-    image: StableCoin,
-    label: "BEGINNER'S GUIDE",
-    title: "What is a stablecoion?",
-  },
-  {
-    image: Glossary,
-    label: "GLOSSARY",
-    title: "Don’t let FUD give you FOMO or you’ll end up REKT — crypto slang, explained",
-  }
-];
+import { topicPrimaryCards, topicSecondaryCards } from "../../../data/learnData";
 
 export default function TopicSection({ title, subtitle, buttonText }) {
   return (
@@ -59,7 +15,7 @@ export default function TopicSection({ title, subtitle, buttonText }) {
         </div>
 
         <div className="mt-16 grid gap-12 md:grid-cols-2">
-          {demoCards.map((card, index) => (
+          {topicPrimaryCards.map((card, index) => (
             <article key={`${card.title}-${index}`}>
               <div className="overflow-hidden bg-[#c8d3d3]">
                 <img
@@ -87,7 +43,7 @@ export default function TopicSection({ title, subtitle, buttonText }) {
         </div>
 
         <div className="mt-16 grid grid-cols-2 gap-12 md:grid-cols-4">
-          {demoCards2.map((card, index) => (
+          {topicSecondaryCards.map((card, index) => (
             <article key={`${card.title}-${index}`}>
               <div className="overflow-hidden bg-[#c8d3d3]">
                 <img

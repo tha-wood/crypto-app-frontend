@@ -1,30 +1,4 @@
-import FuturesIntro from "../../assets/images/futures-intro.png";
-import FuturesBasics from "../../assets/images/futures-basics.png";
-import FuturesPosition from "../../assets/images/futures-position.png";
-import FuturesStrategies from "../../assets/images/futures-strategies.png";
-
-const demoCards = [
-  {
-    image: FuturesIntro,
-    label: "",
-    title: "Futures: Introductions and origins",
-  },
-  {
-    image: FuturesBasics,
-    label: "",
-    title: "Futures fundamentals: Understanding the basics",
-  },
-  {
-    image: FuturesPosition,
-    label: "",
-    title: "Opening, holding, and closing a position in the futures market",
-  },
-  {
-    image: FuturesStrategies,
-    label: "",
-    title: "Trading strategies: Speculating, hedging, and spreading in the futures market",
-  },
-];
+import { futuresCards } from "../../../data/learnData";
 
 export default function Futures({ title, subtitle, buttonText }) {
   return (
@@ -41,7 +15,7 @@ export default function Futures({ title, subtitle, buttonText }) {
         </div>
 
         <div className="mt-16 grid gap-12 md:grid-cols-2">
-          {demoCards.map((card, index) => (
+          {futuresCards.map((card, index) => (
             <article key={`${card.title}-${index}`}>
               <div className="overflow-hidden bg-[#c8d3d3]">
                 <img

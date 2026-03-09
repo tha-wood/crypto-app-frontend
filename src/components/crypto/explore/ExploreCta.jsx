@@ -1,4 +1,4 @@
-import coinsGraphic from "../../assets/images/take-control-coins.png";
+import coinsGraphic from "../../../assets/images/take-control-coins.png";
 
 export default function ExploreCta() {
   return (

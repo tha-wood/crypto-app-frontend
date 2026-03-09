@@ -1,4 +1,4 @@
-import hero from "../assets/images/Hero.png";
+import hero from "../../assets/images/Hero.png";
 export default function Hero() {
   return(
     <section className="mx-auto max-w-[1440px] px-4 pb-10 md:px-8 md:py-14 lg:px-10 lg:py-16">
