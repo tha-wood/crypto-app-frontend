@@ -20,7 +20,7 @@ export default function SignUp() {
       </div>
 
       {/* Content */}
-      <div className="mx-auto flex min-h-[calc(100vh-72px)] max-w-[470px] items-center px-6 py-10">
+      <div className="mx-auto flex min-h-[calc(100vh-72px)] max-w-[500px] items-center px-6 py-10">
         <div className="w-full">
           <h1 className="text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl">
             Create your account

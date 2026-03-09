@@ -1,7 +1,7 @@
 import hero from "../assets/images/Hero.png";
 export default function Hero() {
   return(
-    <section className="mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-14 lg:px-10 lg:py-16">
+    <section className="mx-auto max-w-[1440px] px-4 pb-10 md:px-8 md:py-14 lg:px-10 lg:py-16">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div className="order-1 lg:order-2">
               <h1 className="max-w-[620px] text-[34px] leading-[1] tracking-[-0.03em] text-black md:text-[52px] lg:text-[88px] lg:leading-[0.95] lg:tracking-[-0.04em]">

@@ -20,6 +20,7 @@ import lighter from "../assets/icons/lighter.png";
 import walrus from "../assets/icons/walrus.png";
 import sentient from "../assets/icons/sentient.png";
 import raydium from "../assets/icons/raydium.png";
+import { Link } from "react-router-dom";
 
 const tradable = [
   {
@@ -170,21 +171,23 @@ export default function Explore() {
             Explore crypto like Bitcoin, Ethereum, and Dogecoin.
           </h2>
 
-          <p className="mt-5 text-[16px] leading-7 text-gray-600 md:text-[18px]">
+          <p className="my-5 text-[16px] leading-7 text-gray-600 md:text-[18px]">
             Simply and securely buy, sell, and manage hundreds of
             cryptocurrencies.
           </p>
 
-          <button className="mt-7 rounded-full bg-black px-7 py-3 text-[16px] font-semibold text-white transition hover:opacity-90">
+          <Link 
+            to="/explore"
+            className="mt-7 rounded-full bg-black px-7 py-3 text-[16px] font-semibold text-white transition hover:opacity-90 hover:cursor-pointer">
             See more assets
-          </button>
+          </Link>
         </div>
 
         <div className="rounded-[32px] bg-black p-5 text-white shadow-xl md:p-7 lg:p-9">
           <div className="flex items-center gap-2 overflow-x-auto text-[14px] font-semibold md:gap-4">
             <button
               onClick={() => setTab("tradable")}
-              className={`whitespace-nowrap rounded-full px-4 py-2 transition ${
+              className={`whitespace-nowrap rounded-full hover:cursor-pointer hover:bg-slate-500 px-4 py-2 transition ${
                 tab === "tradable" ? "bg-[#1f2430] text-white" : "text-white"
               }`}
             >
@@ -193,7 +196,7 @@ export default function Explore() {
 
             <button
               onClick={() => setTab("gainers")}
-              className={`whitespace-nowrap rounded-full px-4 py-2 transition ${
+              className={`whitespace-nowrap rounded-full hover:cursor-pointer hover:bg-slate-500 px-4 py-2 transition ${
                 tab === "gainers" ? "bg-[#1f2430] text-white" : "text-white"
               }`}
             >
@@ -202,7 +205,7 @@ export default function Explore() {
 
             <button
               onClick={() => setTab("new")}
-              className={`whitespace-nowrap rounded-full px-4 py-2 transition ${
+              className={`whitespace-nowrap rounded-full hover:cursor-pointer hover:bg-slate-500 px-4 py-2 transition ${
                 tab === "new" ? "bg-[#1f2430] text-white" : "text-white"
               }`}
             >

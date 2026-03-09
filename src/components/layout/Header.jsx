@@ -9,16 +9,17 @@ export default function Header() {
 
         {/* LEFT: Logo */}
         <div className="flex items-center gap-8">
-          <img src={logo} alt="Coinbase logo" className="h-12 w-auto" />
-
+          <Link to="/">
+            <img src={logo} alt="Coinbase logo" className="h-12 w-auto " />
+          </Link>
           {/* NAV LINKS */}
           <nav className="hidden lg:flex items-center gap-8 text-[18px] font-semibold">
-            <Link to="#">Cryptocurrencies</Link>
-            <Link to="#">Individuals</Link>
-            <Link to="#">Businesses</Link>
-            <Link to="#">Institutions</Link>
-            <Link to="#">Developers</Link>
-            <Link to="#">Company</Link>
+            <Link to="/explore" className="hover:bg-slate-50 rounded-3xl p-3">Cryptocurrencies</Link>
+            <Link to="/learn" className="hover:bg-slate-50 rounded-3xl p-3" >Individuals</Link>
+            <Link to="#" className="hover:bg-slate-50 rounded-3xl p-3">Businesses</Link>
+            <Link to="#" className="hover:bg-slate-50 rounded-3xl p-3">Institutions</Link>
+            <Link to="#" className="hover:bg-slate-50 rounded-3xl p-3">Developers</Link>
+            <Link to="#" className="hover:bg-slate-50 rounded-3xl p-3">Company</Link>
           </nav>
         </div>
 

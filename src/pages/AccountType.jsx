@@ -1,23 +1,24 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import { User, Users, MonitorSmartphone } from "lucide-react";
 
 const accountTypes = [
   {
     title: "Personal",
     description: "Trade crypto as an individual.",
-    icon: "👤",
+    icon: <User />,
     type: "personal",
   },
   {
     title: "Business",
     description: "Manage teams and portfolios, accept crypto payments, access APIs, and more.",
-    icon: "👥",
+    icon: <Users />,
     type: "business",
   },
   {
     title: "Developer",
     description: "Build onchain using developer tooling.",
-    icon: "🔷",
+    icon: <MonitorSmartphone />,
     type: "developer",
   },
 ];
