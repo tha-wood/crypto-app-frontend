@@ -22,13 +22,13 @@ export default function SignIn() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="h-16 w-full rounded-2xl border border-blue-500 bg-black px-5 text-xl text-white outline-none placeholder:text-gray-500 focus:border-blue-400"
+                className="h-15 w-full rounded-lg border border-blue-500 bg-black px-5 text-xl text-white outline-none placeholder:text-gray-500 focus:border-blue-400"
               />
             </div>
 
             <button
               type="submit"
-              className="h-16 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-black"
+              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-black"
             >
               Continue
             </button>
@@ -41,19 +41,19 @@ export default function SignIn() {
           </div>
 
           <div className="space-y-4">
-            <button className="flex h-16 w-full items-center justify-center rounded-full bg-[#22252d] px-5 text-lg font-semibold text-white">
+            <button className="flex h-15 w-full items-center justify-center rounded-full bg-[#22252d] px-5 text-lg font-semibold text-white">
               <span className="mr-auto">
                 <CircleUserRound size={22} />
               </span>
               <span className="mr-auto">Sign in with Passkey</span>
             </button>
 
-            <button className="flex h-16 w-full items-center justify-center rounded-full bg-[#22252d] px-5 text-lg font-semibold text-white">
+            <button className="flex h-15 w-full items-center justify-center rounded-full bg-[#22252d] px-5 text-lg font-semibold text-white">
               <span className="mr-auto text-3xl font-bold">G</span>
               <span className="mr-auto">Sign in with Google</span>
             </button>
 
-            <button className="flex h-16 w-full items-center justify-center rounded-full bg-[#22252d] px-5 text-lg font-semibold text-white">
+            <button className="flex h-15 w-full items-center justify-center rounded-full bg-[#22252d] px-5 text-lg font-semibold text-white">
               <span className="mr-auto">
                 <Apple size={22} fill="currentColor" />
               </span>

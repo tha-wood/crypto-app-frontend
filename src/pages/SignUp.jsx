@@ -43,13 +43,13 @@ export default function SignUp() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="h-14 w-full rounded-2xl border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
+                className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
               />
             </div>
 
             <button
               type="submit"
-              className="h-14 w-full rounded-full bg-[#31467b] text-lg font-semibold text-black md:h-16 md:text-xl"
+              className="h-13 w-full rounded-full bg-[#31467b] text-lg font-semibold text-black md:h-16 md:text-xl"
             >
               Continue
             </button>
@@ -62,12 +62,12 @@ export default function SignUp() {
           </div>
 
           <div className="space-y-4">
-            <button className="flex h-14 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white md:h-16 md:text-xl">
+            <button className="flex h-13 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white md:h-16 md:text-xl">
               <span className="w-8 text-2xl font-bold">G</span>
               <span className="flex-1 text-center pr-8">Sign up with Google</span>
             </button>
 
-            <button className="flex h-14 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white md:h-16 md:text-xl">
+            <button className="flex h-13 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white md:h-16 md:text-xl">
               <span className="w-8">
                 <Apple size={22} fill="currentColor" />
               </span>
