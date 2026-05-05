@@ -10,10 +10,10 @@ import ProfilePage from "./pages/ProfilePage";
 function App() {
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 h-10 bg-red-600 text-white flex items-center justify-center px-4 font-bold z-[100] text-sm">
+      <div className="fixed top-0 left-0 right-0 min-h-[40px] bg-red-600 text-white flex items-center justify-center px-4 py-2 font-bold z-[100] text-[11px] sm:text-sm text-center leading-tight">
         WARNING: This is a student project and is not affiliated with Coinbase. Do not enter any real personal information.
       </div>
-      <div className="pt-10">
+      <div className="pt-12 sm:pt-10">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />

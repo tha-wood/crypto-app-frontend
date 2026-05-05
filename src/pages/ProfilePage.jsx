@@ -101,7 +101,7 @@ export default function ProfilePage() {
     return (
       <button
         onClick={() => setActiveTab(item.key)}
-        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
+        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[14px] font-medium transition-colors ${
           active
             ? "bg-blue-50 text-blue-600"
             : "text-gray-600 hover:bg-gray-100"
@@ -314,28 +314,28 @@ export default function ProfilePage() {
   return (
     <div className="flex h-screen bg-[#f5f7fa]">
       {/* ─── SIDEBAR ─────────────────────────────── */}
-      <aside className="flex w-[220px] flex-col border-r border-gray-200 bg-white">
+      <aside className="flex w-[220px] shrink-0 flex-col border-r border-gray-200 bg-white">
         {/* logo row */}
-        <div className="flex items-center justify-between px-5 py-5">
+        <div className="flex items-center justify-between px-5 py-4">
           <span className="text-lg font-bold text-blue-600">Crypto App</span>
           <ChevronLeft size={18} className="text-gray-400" />
         </div>
 
         {/* main nav */}
         <nav className="flex-1 overflow-y-auto px-3">
-          <p className="mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+          <p className="mb-1 px-3 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
             Main
           </p>
-          <div className="space-y-0.5">
+          <div className="space-y-0">
             {mainMenu.map((item) => (
               <SidebarItem key={item.key} item={item} />
             ))}
           </div>
 
-          <p className="mb-1 mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+          <p className="mb-1 mt-4 px-3 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
             Account
           </p>
-          <div className="space-y-0.5">
+          <div className="space-y-0">
             {accountMenu.map((item) => (
               <SidebarItem key={item.key} item={item} />
             ))}
@@ -343,14 +343,14 @@ export default function ProfilePage() {
         </nav>
 
         {/* bottom user card */}
-        <div className="border-t border-gray-100 px-4 py-4">
+        <div className="mt-auto border-t border-gray-100 px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
               {initials}
             </div>
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold">{user.name}</p>
-              <p className="truncate text-xs text-gray-400">{user.email}</p>
+              <p className="truncate text-xs font-semibold">{user.name}</p>
+              <p className="truncate text-[10px] text-gray-400">{user.email}</p>
             </div>
           </div>
 
@@ -359,9 +359,9 @@ export default function ProfilePage() {
               localStorage.removeItem("token");
               navigate("/signin");
             }}
-            className="mt-3 flex w-full items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-red-600"
+            className="mt-2 flex w-full items-center gap-2 text-xs font-medium text-gray-500 transition-colors hover:text-red-600"
           >
-            <LogOut size={16} />
+            <LogOut size={14} />
             Log out
           </button>
         </div>
