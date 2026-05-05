@@ -348,7 +348,10 @@ export default function ProfilePage() {
           </div>
 
           <button
-            onClick={() => navigate("/signin")}
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/signin");
+            }}
             className="mt-3 flex w-full items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-red-600"
           >
             <LogOut size={16} />

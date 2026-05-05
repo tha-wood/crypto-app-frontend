@@ -14,9 +14,10 @@ export default function SignIn() {
     e.preventDefault();
     setError("");
     try {
-      await api.get("/login", {
+      const { data } = await api.get("/login", {
         params: { email, password }
       });
+      localStorage.setItem("token", data.token);
       navigate("/profile"); // Redirect to home/dashboard on success
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");

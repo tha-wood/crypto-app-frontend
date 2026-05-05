@@ -19,9 +19,10 @@ export default function SignUp() {
     setError("");
     try {
       // Using GET with query parameters as strictly specified in the README
-      await api.get("/register", {
+      const { data } = await api.get("/register", {
         params: { name, email, password }
       });
+      localStorage.setItem("token", data.token);
       navigate("/profile"); // Redirect to home/dashboard on success
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
