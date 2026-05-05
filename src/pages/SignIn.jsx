@@ -17,8 +17,13 @@ export default function SignIn() {
       const { data } = await api.get("/login", {
         params: { email, password }
       });
-      localStorage.setItem("token", data.token);
-      navigate("/profile"); // Redirect to home/dashboard on success
+      console.log("Login success, received data:", data);
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/profile");
+      } else {
+        setError("No token received from server");
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }

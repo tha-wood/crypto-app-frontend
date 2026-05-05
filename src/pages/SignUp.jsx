@@ -22,8 +22,14 @@ export default function SignUp() {
       const { data } = await api.get("/register", {
         params: { name, email, password }
       });
-      localStorage.setItem("token", data.token);
-      navigate("/profile"); // Redirect to home/dashboard on success
+      console.log("Registration success, received data:", data);
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/profile");
+      } else {
+        // Some backends might not send token on register, if so, redirect to signin
+        navigate("/signin");
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     }
