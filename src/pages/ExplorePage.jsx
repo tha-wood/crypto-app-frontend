@@ -5,6 +5,7 @@ import MarketStatsMain from "../components/crypto/explore/MarketStats";
 import PricesTable from "../components/crypto/explore/PricesTable";
 import ExploreCta from "../components/crypto/explore/ExploreCta";
 import Footer from "../components/layout/Footer";
+import CreateCryptoForm from "../components/crypto/explore/CreateCryptoForm";
 
 export default function ExplorePage() {
   return (
@@ -17,6 +18,11 @@ export default function ExplorePage() {
           <div className="min-w-0 xl:border-r xl:border-gray-200">
             <ExploreMainHero />
             <MarketStatsMain />
+            
+            <div className="px-4 md:px-8 xl:px-10">
+              <CreateCryptoForm onCryptoAdded={() => window.location.reload()} />
+            </div>
+
             <PricesTable />
           </div>
 

@@ -1,4 +1,6 @@
-import { priceFilters, priceRows } from "../../../data/exploreData";
+import { priceFilters } from "../../../data/exploreData";
+import { useState, useEffect } from "react";
+import api from "../../../api";
 
 function chartColorClass(color) {
   if (color === "orange") return "text-orange-500";
@@ -11,6 +13,20 @@ function chartColorClass(color) {
 }
 
 export default function PricesTable() {
+  const [cryptos, setCryptos] = useState([]);
+
+  useEffect(() => {
+    const fetchCryptos = async () => {
+      try {
+        const { data } = await api.get('/crypto');
+        setCryptos(data);
+      } catch (err) {
+        console.error("Failed to fetch cryptos", err);
+      }
+    };
+    fetchCryptos();
+  }, []);
+
   return (
     <section className="border-t border-b border-gray-200">
       <div className="mx-auto max-w-[1440px]">
@@ -20,7 +36,7 @@ export default function PricesTable() {
               Crypto market prices
             </h2>
             <span className="pb-1 text-[18px] text-gray-500">
-              18,532 assets
+              {cryptos.length} assets
             </span>
           </div>
 
@@ -61,14 +77,14 @@ export default function PricesTable() {
               </thead>
 
               <tbody>
-                {priceRows.map((row) => (
-                  <tr key={row.name}>
+                {cryptos.map((row) => (
+                  <tr key={row._id}>
                     <td className="text-gray-400">☆</td>
 
                     <td>
                       <div className="flex items-center gap-4">
                         <img
-                          src={row.icon}
+                          src={row.image}
                           alt={row.name}
                           className="h-10 w-10 rounded-full object-contain"
                         />
@@ -83,19 +99,19 @@ export default function PricesTable() {
                       </div>
                     </td>
 
-                    <td className="text-[18px] text-black">{row.price}</td>
+                    <td className="text-[18px] text-black">${row.price}</td>
 
-                    <td className={`text-[18px] ${chartColorClass(row.chart)}`}>
-                      ↗↘↗
+                    <td className={`text-[18px] ${chartColorClass(row.change24h > 0 ? "green" : "red")}`}>
+                      {row.change24h > 0 ? "↗" : "↘"}
                     </td>
 
-                    <td className={`text-[18px] ${row.changeColor}`}>
-                      {row.change}
+                    <td className={`text-[18px] ${row.change24h > 0 ? "text-green-600" : "text-red-500"}`}>
+                      {row.change24h > 0 ? "+" : ""}{row.change24h}%
                     </td>
 
-                    <td className="text-[18px] text-black">{row.mktCap}</td>
+                    <td className="text-[18px] text-black">-</td>
 
-                    <td className="text-[18px] text-black">{row.volume}</td>
+                    <td className="text-[18px] text-black">-</td>
 
                     <td>
                       <button className="rounded-full bg-[#1652f0] px-7 py-3 text-[16px] font-semibold text-white">

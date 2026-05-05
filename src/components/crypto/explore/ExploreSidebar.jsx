@@ -1,7 +1,27 @@
 import StarImage from "../../../assets/images/star.svg";
-import { newOnCoinbase, topMovers } from "../../../data/exploreData";
+import { useState, useEffect } from "react";
+import api from "../../../api";
 
 export default function ExploreSidebar() {
+  const [topMovers, setTopMovers] = useState([]);
+  const [newOnCoinbase, setNewOnCoinbase] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [gainersRes, newRes] = await Promise.all([
+          api.get('/crypto/gainers'),
+          api.get('/crypto/new')
+        ]);
+        setTopMovers(gainersRes.data.slice(0, 4)); // Get top 4 gainers
+        setNewOnCoinbase(newRes.data.slice(0, 4)); // Get top 4 new listings
+      } catch (err) {
+        console.error("Failed to fetch sidebar crypto data", err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <aside className="px-4 py-8 md:px-8 xl:px-8">
       <div className="space-y-12">
@@ -46,23 +66,23 @@ export default function ExploreSidebar() {
           <div className="mt-6 grid grid-cols-2 gap-4">
             {topMovers.map((item) => (
               <div
-                key={item.name}
+                key={item._id}
                 className="rounded-[28px] bg-[#e9edf2] p-5"
               >
                 <img
-                  src={item.icon}
+                  src={item.image}
                   alt={item.name}
                   className="h-10 w-10 rounded-full object-contain"
                 />
 
                 <p className="mt-5 text-[14px] text-gray-500">{item.name}</p>
 
-                <p className="mt-1 text-[18px] font-semibold text-green-600">
-                  {item.change}
+                <p className={`mt-1 text-[18px] font-semibold ${item.change24h > 0 ? 'text-green-600' : 'text-red-500'}`}>
+                  {item.change24h > 0 ? "+" : ""}{item.change24h}%
                 </p>
 
                 <p className="mt-1 text-[16px] text-gray-700">
-                  {item.price}
+                  ${item.price}
                 </p>
               </div>
             ))}
@@ -85,11 +105,11 @@ export default function ExploreSidebar() {
           <div className="mt-6 grid grid-cols-2 gap-4">
             {newOnCoinbase.map((item) => (
               <div
-                key={item.name}
+                key={item._id}
                 className="rounded-[28px] bg-[#e9edf2] p-5"
               >
                 <img
-                  src={item.icon}
+                  src={item.image}
                   alt={item.name}
                   className="h-10 w-10 rounded-full object-contain"
                 />
@@ -103,7 +123,7 @@ export default function ExploreSidebar() {
                 </p>
 
                 <p className="mt-2 text-[16px] text-gray-600">
-                  {item.subtitle}
+                  Added recently
                 </p>
               </div>
             ))}
