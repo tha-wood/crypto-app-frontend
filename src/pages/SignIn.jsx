@@ -1,7 +1,28 @@
 import { Apple, CircleUserRound } from "lucide-react";
 import logo from "../assets/images/logo.png";
+import { useState } from "react";
+import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await api.get("/login", {
+        params: { email, password }
+      });
+      navigate("/profile"); // Redirect to home/dashboard on success
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="px-6 pt-6">
@@ -14,7 +35,9 @@ export default function SignIn() {
             Sign in to Coinbase
           </h1>
 
-          <form className="space-y-5">
+          {error && <p className="mb-4 text-red-500">{error}</p>}
+
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
               <label className="mb-2 block text-sm font-medium text-white">
                 Email
@@ -22,13 +45,31 @@ export default function SignIn() {
               <input
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="h-15 w-full rounded-lg border border-blue-500 bg-black px-5 text-xl text-white outline-none placeholder:text-gray-500 focus:border-blue-400"
               />
+            </div>
+            
+            <div>
+              <label className="mb-2 block text-sm font-medium text-white">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="Your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="h-15 w-full rounded-lg border border-blue-500 bg-black px-5 text-xl text-white outline-none placeholder:text-gray-500 focus:border-blue-400"
+              />
+              <p className="mt-2 text-xs text-red-400 font-medium">Demo app – do not use your real password</p>
             </div>
 
             <button
               type="submit"
-              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-black"
+              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-white"
             >
               Continue
             </button>

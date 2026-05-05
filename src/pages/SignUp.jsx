@@ -1,10 +1,32 @@
 import { Apple } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import { useState } from "react";
+import api from "../api";
 
 export default function SignUp() {
   const location = useLocation();
+  const navigate = useNavigate();
   const accountType = location.state?.accountType || "personal";
+  
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      // Using GET with query parameters as strictly specified in the README
+      await api.get("/register", {
+        params: { name, email, password }
+      });
+      navigate("/profile"); // Redirect to home/dashboard on success
+    } catch (err) {
+      setError(err.response?.data?.message || "Registration failed");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -34,7 +56,24 @@ export default function SignUp() {
             {accountType} account
           </p>
 
-          <form className="mt-8 space-y-5">
+          {error && <p className="mt-4 text-red-500">{error}</p>}
+
+          <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+            <div>
+              <label className="mb-2 block text-sm font-medium text-white">
+                Name
+              </label>
+
+              <input
+                type="text"
+                placeholder="Your full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
+              />
+            </div>
+
             <div>
               <label className="mb-2 block text-sm font-medium text-white">
                 Email
@@ -43,13 +82,32 @@ export default function SignUp() {
               <input
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
               />
+            </div>
+            
+            <div>
+              <label className="mb-2 block text-sm font-medium text-white">
+                Password
+              </label>
+
+              <input
+                type="password"
+                placeholder="Your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
+              />
+              <p className="mt-2 text-xs text-red-400 font-medium">Demo app – do not use your real password</p>
             </div>
 
             <button
               type="submit"
-              className="h-13 w-full rounded-full bg-[#31467b] text-lg font-semibold text-black md:h-16 md:text-xl"
+              className="h-13 w-full rounded-full bg-[#31467b] text-lg font-semibold text-white md:h-16 md:text-xl"
             >
               Continue
             </button>
