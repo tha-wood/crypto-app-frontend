@@ -88,6 +88,10 @@ export default function Footer() {
           </div>
 
         </div>
+        
+        <div className="mt-8 border-t border-gray-200 pt-6 text-center text-sm font-semibold text-red-500">
+          DISCLAIMER: This is a demo/student project. Users should not enter any real personal information!
+        </div>
       </div>
     </footer>
   );

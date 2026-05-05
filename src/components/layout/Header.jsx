@@ -4,7 +4,7 @@ import logo from "../../assets/images/logo.png";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white">
+    <header className="fixed top-10 left-0 right-0 z-50 border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-2">
 
         {/* LEFT: Logo */}
