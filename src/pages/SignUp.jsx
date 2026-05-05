@@ -1,4 +1,4 @@
-import { Apple } from "lucide-react";
+import { Apple, Eye, EyeOff, Loader2 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { useState } from "react";
@@ -12,11 +12,14 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
     try {
       // Using GET with query parameters as strictly specified in the README
       const { data } = await api.get("/register", {
@@ -27,11 +30,12 @@ export default function SignUp() {
         localStorage.setItem("token", data.token);
         navigate("/profile");
       } else {
-        // Some backends might not send token on register, if so, redirect to signin
         navigate("/signin");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,117 +52,102 @@ export default function SignUp() {
         </Link>
       </div>
 
-      {/* Content */}
-      <div className="mx-auto flex min-h-[calc(100vh-72px)] max-w-[500px] items-center px-6 py-10">
-        <div className="w-full">
-          <h1 className="text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl">
-            Create your account
-          </h1>
+      {/* Main Content */}
+      <div className="mx-auto flex max-w-lg flex-col px-8 py-16">
+        <h1 className="mb-4 text-center text-4xl font-bold tracking-tight md:text-5xl">
+          Create your account
+        </h1>
+        <p className="mb-8 text-center text-gray-400">
+          Access all that Coinbase has to offer with a single account.
+        </p>
 
-          <p className="mt-4 text-lg leading-8 text-gray-400 md:text-xl">
-            Access all that Coinbase has to offer with a single account.
-          </p>
+        <p className="mb-8 text-center text-sm font-bold uppercase tracking-widest text-[#0052ff]">
+          {accountType} ACCOUNT
+        </p>
 
-          <p className="mt-4 text-sm uppercase tracking-wide text-blue-500">
-            {accountType} account
-          </p>
+        {error && <p className="mb-4 text-center text-red-500">{error}</p>}
 
-          {error && <p className="mt-4 text-red-500">{error}</p>}
-
-          <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="space-y-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                Name
-              </label>
-
+              <label className="mb-2 block text-sm font-semibold">Name</label>
               <input
                 type="text"
-                placeholder="Your full name"
+                placeholder="Full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
+                className="h-10 w-full rounded-lg border border-[#333] bg-transparent px-4 text-lg focus:border-[#0052ff] outline-none"
               />
             </div>
-
             <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                Email
-              </label>
-
+              <label className="mb-2 block text-sm font-semibold">Email</label>
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
+                className="h-10 w-full rounded-lg border border-[#333] bg-transparent px-4 text-lg focus:border-[#0052ff] outline-none"
               />
             </div>
-            
             <div>
-              <label className="mb-2 block text-sm font-medium text-white">
-                Password
-              </label>
-
-              <input
-                type="password"
-                placeholder="Your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="h-14 w-full rounded-lg border border-gray-700 bg-black px-5 text-lg text-white outline-none placeholder:text-gray-500 focus:border-blue-500 md:h-16"
-              />
+              <label className="mb-2 block text-sm font-semibold">Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="h-10 w-full rounded-lg border border-[#333] bg-transparent px-4 pr-12 text-lg focus:border-[#0052ff] outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               <p className="mt-2 text-xs text-red-400 font-medium">Demo app – do not use your real password</p>
             </div>
 
             <button
               type="submit"
-              className="h-15 w-full rounded-full bg-[#0052ff] text-lg font-semibold text-white active:scale-[0.98] transition-all"
+              disabled={loading}
+              className="h-15 w-full rounded-full bg-[#0052ff] text-lg font-semibold text-white active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Create account
-            </button>
-          </form>
-
-          <div className="my-6 flex items-center gap-4 text-sm text-gray-400">
-            <div className="h-px flex-1 bg-gray-800" />
-            <span>OR</span>
-            <div className="h-px flex-1 bg-gray-800" />
-          </div>
-
-          <div className="space-y-4">
-            <button className="flex h-13 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white md:h-16 md:text-xl">
-              <span className="w-8 text-2xl font-bold">G</span>
-              <span className="flex-1 text-center pr-8">Sign up with Google</span>
-            </button>
-
-            <button className="flex h-13 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white md:h-16 md:text-xl">
-              <span className="w-8">
-                <Apple size={22} fill="currentColor" />
-              </span>
-              <span className="flex-1 text-center pr-8">Sign up with Apple</span>
+              {loading ? <Loader2 className="animate-spin" /> : "Create account"}
             </button>
           </div>
+        </form>
 
-          <p className="mt-8 text-center text-lg font-semibold md:text-xl">
-            Already have an account?{" "}
-            <Link to="/signin" className="text-blue-500 hover:underline">
-              Sign in
-            </Link>
-          </p>
+        <div className="mt-8 space-y-4">
+          <button className="flex h-13 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white active:scale-[0.98] transition-all">
+            <span className="w-8 text-2xl font-bold">G</span>
+            <span className="flex-1 text-center pr-8">Sign up with Google</span>
+          </button>
 
-          <p className="mt-8 text-center text-sm leading-6 text-gray-400">
-            By creating an account you certify that you are over the age of 18
-            and agree to our{" "}
-            <a href="#" className="underline">
-              Privacy Policy
-            </a>{" "}
-            and{" "}
-            <a href="#" className="underline">
-              Cookie Policy
-            </a>.
-          </p>
+          <button className="flex h-13 w-full items-center rounded-full bg-[#22252d] px-6 text-lg font-semibold text-white active:scale-[0.98] transition-all">
+            <span className="w-8">
+              <Apple size={22} fill="currentColor" />
+            </span>
+            <span className="flex-1 text-center pr-8">Sign up with Apple</span>
+          </button>
         </div>
+
+        <p className="mt-10 text-center text-lg font-semibold md:text-xl">
+          Already have an account?{" "}
+          <Link to="/signin" className="text-blue-500 hover:underline">
+            Sign in
+          </Link>
+        </p>
+
+        <p className="mt-8 text-center text-sm leading-6 text-gray-400">
+          By creating an account you certify that you are over the age of 18
+          and agree to our <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Cookie Policy</a>.
+        </p>
       </div>
     </div>
   );

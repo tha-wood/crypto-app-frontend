@@ -1,4 +1,4 @@
-import { Apple, CircleUserRound } from "lucide-react";
+import { Apple, CircleUserRound, Eye, EyeOff, Loader2 } from "lucide-react";
 import logo from "../assets/images/logo.png";
 import { useState } from "react";
 import api from "../api";
@@ -8,11 +8,14 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
     try {
       const { data } = await api.get("/login", {
         params: { email, password }
@@ -26,6 +29,8 @@ export default function SignIn() {
       }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -62,22 +67,32 @@ export default function SignIn() {
               <label className="mb-2 block text-sm font-medium text-white">
                 Password
               </label>
-              <input
-                type="password"
-                placeholder="Your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="h-15 w-full rounded-lg border border-blue-500 bg-black px-5 text-xl text-white outline-none placeholder:text-gray-500 focus:border-blue-400"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="h-15 w-full rounded-lg border border-blue-500 bg-black px-5 pr-12 text-xl text-white outline-none placeholder:text-gray-500 focus:border-blue-400"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               <p className="mt-2 text-xs text-red-400 font-medium">Demo app – do not use your real password</p>
             </div>
 
             <button
               type="submit"
-              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-white active:scale-[0.98] transition-all"
+              disabled={loading}
+              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-white active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              Continue
+              {loading ? <Loader2 className="animate-spin" /> : "Continue"}
             </button>
           </form>
 
