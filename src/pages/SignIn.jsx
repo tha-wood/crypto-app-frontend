@@ -75,7 +75,7 @@ export default function SignIn() {
 
             <button
               type="submit"
-              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-white"
+              className="h-15 w-full rounded-full bg-[#2f467d] text-lg font-semibold text-white active:scale-[0.98] transition-all"
             >
               Continue
             </button>

@@ -101,7 +101,7 @@ export default function ProfilePage() {
     return (
       <button
         onClick={() => setActiveTab(item.key)}
-        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[14px] font-medium transition-colors ${
+        className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-[14px] font-medium transition-all active:scale-95 ${
           active
             ? "bg-blue-50 text-blue-600"
             : "text-gray-600 hover:bg-gray-100"
@@ -122,7 +122,7 @@ export default function ProfilePage() {
   const DashboardContent = () => (
     <>
       {/* balance card */}
-      <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+      <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-sm text-gray-500">
@@ -140,7 +140,7 @@ export default function ProfilePage() {
               <button
                 key={p}
                 onClick={() => setActivePeriod(p)}
-                className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
+                className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-all active:scale-90 ${
                   activePeriod === p
                     ? "bg-blue-600 text-white"
                     : "text-gray-500 hover:bg-gray-100"
@@ -165,9 +165,9 @@ export default function ProfilePage() {
           return (
             <button
               key={a.label}
-              className="flex flex-col items-center gap-2 text-gray-700 transition-colors hover:text-blue-600"
+              className="flex flex-col items-center gap-2 text-gray-700 transition-all active:scale-90 group"
             >
-              <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-blue-600 text-blue-600">
+              <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 border-blue-600 text-blue-600 group-hover:bg-blue-50 transition-all">
                 <Icon size={18} />
               </div>
               <span className="text-[11px] sm:text-sm font-medium">{a.label}</span>

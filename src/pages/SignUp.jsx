@@ -114,9 +114,9 @@ export default function SignUp() {
 
             <button
               type="submit"
-              className="h-13 w-full rounded-full bg-[#31467b] text-lg font-semibold text-white md:h-16 md:text-xl"
+              className="h-15 w-full rounded-full bg-[#0052ff] text-lg font-semibold text-white active:scale-[0.98] transition-all"
             >
-              Continue
+              Create account
             </button>
           </form>
 
