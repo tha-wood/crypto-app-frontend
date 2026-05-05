@@ -60,11 +60,18 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchProfile = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/signin");
+        return;
+      }
+
       try {
         const { data } = await api.get("/profile");
         setUser(data);
         setLoading(false);
-      } catch {
+      } catch (err) {
+        console.error("Profile fetch failed:", err);
         navigate("/signin");
       }
     };
